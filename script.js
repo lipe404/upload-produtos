@@ -248,7 +248,7 @@ function criarCardProduto(produto, index) {
                    style="display: none;"
                    data-produto="${produto}">
         </div>
-        <div class="preview-container" id="preview-${index}"></div>
+        <div class="preview-container"></div>
         ${
           produtosComImagens[produto]
             ? `<div class="contador-imagens">${produtosComImagens[produto].length} imagem(ns)</div>`
@@ -265,11 +265,6 @@ function criarCardProduto(produto, index) {
   fileInput.addEventListener("change", (e) => {
     handleFileSelect(e, produto, index);
   });
-
-  // Renderizar preview se já tiver imagens
-  if (produtosComImagens[produto]) {
-    renderizarPreview(produto, index);
-  }
 
   return card;
 }
@@ -323,7 +318,12 @@ async function handleFileSelect(event, produto, index) {
 
 // === RENDERIZAR PREVIEW DAS IMAGENS ===
 function renderizarPreview(produto, index) {
-  const previewContainer = document.getElementById(`preview-${index}`);
+  const card = document.querySelector(`[data-produto="${produto}"]`);
+  if (!card) return;
+
+  const previewContainer = card.querySelector(".preview-container");
+  if (!previewContainer) return;
+
   previewContainer.innerHTML = "";
 
   const imagens = produtosComImagens[produto];
@@ -349,7 +349,6 @@ function renderizarPreview(produto, index) {
   });
 
   // Atualizar contador
-  const card = document.querySelector(`[data-produto="${produto}"]`);
   let contador = card.querySelector(".contador-imagens");
   if (!contador) {
     contador = document.createElement("div");
