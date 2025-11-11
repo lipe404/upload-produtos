@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Upload de Imagens dos Produtos</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Upload de Imagens de Produtos</h1>
+                <p>Clique nos cards abaixo para adicionar imagens aos produtos.
+                    Você pode adicionar múltiplas imagens (variações) por
+                    produto.</p>
+            </header>
+
+            <div class="controls">
+                <input type="text" id="searchInput"
+                    placeholder="Buscar produto..." />
+                <div class="stats">
+                    <span id="totalProdutos">0</span> produtos |
+                    <span id="produtosComImagem">0</span> com imagem
+                </div>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="todos">Todos</button>
+                <button class="tab" data-filter="pendentes">Pendentes</button>
+                <button class="tab" data-filter="completos">Completos</button>
+            </div>
+
+            <div id="produtosGrid" class="produtos-grid"></div>
+
+            <div class="actions">
+                <button id="btnEnviarTodos" class="btn-primary" disabled>
+                    Enviar Todos os Produtos com Imagem
+                </button>
+                <button id="btnLimpar" class="btn-secondary">
+                    Limpar Seleções
+                </button>
+            </div>
+
+            <div id="status" class="status-box"></div>
+        </div>
+
+        <!-- Modal de Preview -->
+        <div id="modalPreview" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitulo"></h2>
+                <div id="modalImagens" class="preview-grid"></div>
+                <button id="btnRemoverProduto" class="btn-danger">Remover Todas
+                    as Imagens</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
