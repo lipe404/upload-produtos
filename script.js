@@ -224,6 +224,11 @@ function renderizarProdutos(filtro = "") {
     }
 
     grid.appendChild(card);
+
+    // Renderizar preview se houver imagens existentes
+    if (produtosComImagens[produto]) {
+      renderizarPreview(produto, index);
+    }
   });
 }
 
